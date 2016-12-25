@@ -1,7 +1,13 @@
 package com.mani.gayi.model;
 
-public class Issue {
+import java.io.Serializable;
 
+public class Issue implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7082913917873974374L;
 	private int issueId;
 	private String issueSummary;
 	private String clientCode;
@@ -10,6 +16,12 @@ public class Issue {
 	private String issueSolution;
 	private String issueType;
 	
+	
+	
+	public Issue() {
+		super();
+	}
+
 	public String getIssueType() {
 		return issueType;
 	}
