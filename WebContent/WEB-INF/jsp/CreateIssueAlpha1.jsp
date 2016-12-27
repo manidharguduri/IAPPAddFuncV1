@@ -40,9 +40,9 @@
 		});
 
 		function display(data) {
-			var json = "<h4>Ajax Response</h4><pre>" + JSON.stringify(data)
-					+ "</pre>";
-			$('#feedback').html(json);
+// 			var json = "<h4>Ajax Response</h4><pre>" + JSON.stringify(data)
+// 					+ "</pre>";
+// 			$('#feedback').html(json);
 
 			Materialize.toast('Ur issue has been saved....', 4000);
 
@@ -90,11 +90,9 @@
 
 
 					<div class="card-content">
-						<span class="card-title">Log an Issue</span> <<<<<<< HEAD
+						<span class="card-title">Log an Issue</span> 
 						<div id="feedback"></div>
 
-						======= >>>>>>> branch 'master' of
-						https://github.com/manidharguduri/IAPPAddFuncV1.git
 						<div class="row">
 							<div class="input-field col s12">
 								<input id="issueSummaryid" type="text" class="validate"
