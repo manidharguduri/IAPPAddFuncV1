@@ -19,25 +19,34 @@
 	function searchText() {
 
 		var issue = {
-			"issueSummary" : "bhanu",
-			"clientCode" : "prasad",
-			"clientVersion" : "879",
-			"issueDescription" : "Issue Descrti",
-			"issueSolution":"Soltuionnnnnnnnnnnnnnn",
-			"issueType":"functional"
+			"issueSummary" : $("#issueSummaryid").val(),
+			"clientCode" : $("#clientcodeid").val(),
+			"clientVersion" : $("#clientVersionid").val(),
+			"issueDescription" : $("#issueDescriptionid").val(),
+			"issueSolution" : $("#issueSolutionid").val(),
+			"issueType" : $("#issueTypeid").val()
 		}
 		$.ajax({
 			type : "POST",
 			contentType : 'application/json; charset=utf-8',
 			dataType : 'json',
-			processData:false,
+			processData : false,
 			url : "save",
 			data : JSON.stringify(issue),
-			success : function(result) {
-
-				alert('success');
+			success : function(data) {
+				console.log("SUCCESS: ");
+				display(data);
 			}
 		});
+
+		function display(data) {
+			var json = "<h4>Ajax Response</h4><pre>" + JSON.stringify(data)
+					+ "</pre>";
+			$('#feedback').html(json);
+
+			Materialize.toast('Ur issue has been saved....', 4000);
+
+		}
 	}
 </script>
 
@@ -81,9 +90,11 @@
 
 
 					<div class="card-content">
-						<span class="card-title">Log an Issue</span>
+						<span class="card-title">Log an Issue</span> <<<<<<< HEAD
+						<div id="feedback"></div>
 
-
+						======= >>>>>>> branch 'master' of
+						https://github.com/manidharguduri/IAPPAddFuncV1.git
 						<div class="row">
 							<div class="input-field col s12">
 								<input id="issueSummaryid" type="text" class="validate"
