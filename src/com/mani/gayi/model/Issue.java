@@ -83,4 +83,17 @@ public class Issue implements Serializable{
 		this.issueSolution = issueSolution;
 	}
 
+	public Issue(int issueId, String issueSummary, String clientCode, int clientVersion, String issueDescription,
+			String issueSolution, String issueType) {
+		super();
+		this.issueId = issueId;
+		this.issueSummary = issueSummary;
+		this.clientCode = clientCode;
+		this.clientVersion = clientVersion;
+		this.issueDescription = issueDescription;
+		this.issueSolution = issueSolution;
+		this.issueType = issueType;
+	}
+
+
 }
