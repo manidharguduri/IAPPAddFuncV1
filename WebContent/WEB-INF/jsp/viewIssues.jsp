@@ -20,10 +20,13 @@
 <spring:url value="/project/js/jquery.min.js" var="jQueryJS" />
 <spring:url value="/project/js/materialize_pine.js" var="materializeJS" />
 <spring:url value="/project/js/navbar.js" var="navbarJS" />
+<spring:url value="/project/js/collapsible.js" var="collapsibleJS" />
 
 <script src="${jQueryJS}"></script>
 <script src="${materializeJS}"></script>
 <script src="${navbarJS}"></script>
+<script src="${collapsibleJS}"></script>
+
 
 
 
@@ -53,14 +56,14 @@
 			item2 = item2 + '<i class="material-icons">add</i>Third:';
 			item2 = item2 + data[i].clientCode;
 			item2 = item2 + '</div>';
-			item2 = item2 + '<div class="collapsible-body">';
+			item2 = item2 + '<div class="collapsible-body"><p>';
 			item2 = item2 + data[i].issueSolution;
-			item2 = item2 + '</div>';
+			item2 = item2 + '</p></div>';
 			item2 = item2 + '</li>';
 			item2 = item2 + '</ul>';
+			this.$('.collapsible').collapsible();
 			$("#reloadme").append(item2);
-
-		}
+			}
 
 	}
 
@@ -97,24 +100,25 @@
 					<c:if test="${not empty listsofIssues}">
 						<c:forEach var="listValue" items="${listsofIssues}">
 
-							<div id="reloadme">
-								<ul class="collapsible" data-collapsible="expandable">
 
-									<li>
-										<div class="collapsible-header">
-											<i class="material-icons">add</i>Third:${listValue.clientVersion}
-										</div>
-										<div class="collapsible-body">
-											<p>${listValue.issueSolution}</p>
-										</div>
-									</li>
-								</ul>
+							<ul class="collapsible" data-collapsible="expandable">
 
-							</div>
+								<li>
+									<div class="collapsible-header">
+										<i class="material-icons">add</i>Third:${listValue.clientVersion}
+									</div>
+									<div class="collapsible-body">
+										<p>${listValue.issueSolution}</p>
+									</div>
+								</li>
+							</ul>
+
 
 						</c:forEach>
 
 					</c:if>
+					<div id="reloadme"></div>
+
 
 					<div class="row">
 

@@ -22,9 +22,9 @@ public class IssueDataTest {
 		list.add(issue1);
 
 		Issue issue2 = new Issue();
-		issue2.setClientCode("USEI");
+		issue2.setClientCode("UMLN");
 		issue2.setClientVersion(2011);
-		issue2.setIssueDescription("Hi");
+		issue2.setIssueDescription("Heycjkajcdklj;jlasdkfjl;kjldskaf");
 		issue2.setIssueId(100);
 		issue2.setIssueSolution("How are you ");
 		issue2.setIssueSummary("Big Summary");
