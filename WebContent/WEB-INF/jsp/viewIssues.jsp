@@ -42,31 +42,40 @@
 		});
 	}
 	function display(data) {
-		var ajaxresponse = "";
 		for (i = 0; i < data.length; i++) {
-			ajaxresponse += "<p>" + data[i].issueId + "has"
-					+ data[i].issueSummary + "and" + data[i].clientCode
-					+ ".</p>";
-		}
 
-		alert(ajaxresponse);
+			"<p>" + data[i].issueId + "has" + data[i].issueSummary + "and"
+					+ data[i].clientCode + ".</p>";
+
+			var item2 = '<ul class="collapsible" data-collapsible="expandable">';
+			item2 = item2 + '<li>';
+			item2 = item2 + '<div class="collapsible-header">';
+			item2 = item2 + '<i class="material-icons">add</i>Third:';
+			item2 = item2 + data[i].clientCode;
+			item2 = item2 + '</div>';
+			item2 = item2 + '<div class="collapsible-body">';
+			item2 = item2 + data[i].issueSolution;
+			item2 = item2 + '</div>';
+			item2 = item2 + '</li>';
+			item2 = item2 + '</ul>';
+			$("#reloadme").append(item2);
+
+		}
 
 	}
 
-	
-	
 	$(function() {
-	      $(window).scroll(function () {
-	         var docElement = $(document)[0].documentElement;
-	         var winElement = $(window)[0];
+		$(window)
+				.scroll(
+						function() {
+							var docElement = $(document)[0].documentElement;
+							var winElement = $(window)[0];
 
-	         if ((docElement.scrollHeight - winElement.innerHeight) == winElement.pageYOffset) {
-	            alert('bottom');
-	         }
-	      });
-	   });
-
-	
+							if ((docElement.scrollHeight - winElement.innerHeight) == winElement.pageYOffset) {
+								searchText();
+							}
+						});
+	});
 </script>
 <style>
 </style>
@@ -79,14 +88,16 @@
 		<div class="col s12 m6">
 			<div class="card ">
 
-					<div class="card-content">
-						<span class="card-title">Issues found</span>
+				<div class="card-content">
+					<span class="card-title">Issues found</span>
 
 
 
 
-						<c:if test="${not empty listsofIssues}">
-							<c:forEach var="listValue" items="${listsofIssues}">
+					<c:if test="${not empty listsofIssues}">
+						<c:forEach var="listValue" items="${listsofIssues}">
+
+							<div id="reloadme">
 								<ul class="collapsible" data-collapsible="expandable">
 
 									<li>
@@ -99,25 +110,25 @@
 									</li>
 								</ul>
 
-
-
-							</c:forEach>
-
-						</c:if>
-
-						<div class="row">
-
-							<div class="input-field col s12">
-								<button class="btn waves-effect waves-light "
-									onclick="searchText();" id="onsubmit">
-									Submit <i class="material-icons right">send</i>
-								</button>
 							</div>
-						</div>
 
+						</c:forEach>
+
+					</c:if>
+
+					<div class="row">
+
+						<div class="input-field col s12">
+							<button class="btn waves-effect waves-light "
+								onclick="searchText();" id="onsubmit">
+								Submit <i class="material-icons right">send</i>
+							</button>
+						</div>
 					</div>
+
 				</div>
 			</div>
+		</div>
 	</div>
 </body>
 </html>
