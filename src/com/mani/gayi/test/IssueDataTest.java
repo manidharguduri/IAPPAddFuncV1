@@ -7,7 +7,7 @@ import com.mani.gayi.model.Issue;
 
 public class IssueDataTest {
 
-	public List<Issue> getIssueList() {
+	public List<Issue> getIssueList(int startindex,int endindex) {
 
 		List<Issue> list = new ArrayList<>();
 		Issue issue1 = new Issue();
@@ -311,9 +311,79 @@ public class IssueDataTest {
 		list.add(issue50);
 		Issue issue51 = new Issue(2001, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
 		list.add(issue51);
+		
+		if(endindex<list.size())
+		{
+			return list.subList(startindex,endindex);
+		}
+		return new ArrayList<Issue>();
 
+	}
+	
+	
+	public List<Issue> getIssueList()
+	{
+		
+		List<Issue> list = new ArrayList<>();
+		Issue issue27 = new Issue(2001, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue27);
+		Issue issue28 = new Issue(2002, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue28);
+		Issue issue29 = new Issue(2003, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue29);
+		Issue issue30 = new Issue(2004, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue30);
+		Issue issue31 = new Issue(2005, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue31);
+		Issue issue32 = new Issue(2006, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue32);
+		Issue issue33 = new Issue(2007, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue33);
+		Issue issue35 = new Issue(2008, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue35);
+		Issue issue36 = new Issue(2009, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue36);
+		Issue issue37 = new Issue(2010, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue37);
+		Issue issue38 = new Issue(2011, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue38);
+		Issue issue39 = new Issue(2012, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue39);
+		Issue issue40 = new Issue(2013, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue40);
+		Issue issue41 = new Issue(2014, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue41);
+		Issue issue42 = new Issue(2015, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue42);
+		Issue issue43 = new Issue(2016, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue43);
+		Issue issue44 = new Issue(2017, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue44);
+		Issue issue45 = new Issue(2018, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue45);
+		Issue issue46 = new Issue(2019, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue46);
+		Issue issue372020 = new Issue(2020, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue372020);
+		Issue issue382021 = new Issue(2021, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue382021);
+		Issue issue392022 = new Issue(2022, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue392022);
+		Issue issue402023 = new Issue(2023, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue402023);
+		Issue issue412024 = new Issue(2024, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue412024);
+		Issue issue422025 = new Issue(2025, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue422025);
+		Issue issue432026 = new Issue(2026, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue432026);
+		Issue issue442027 = new Issue(2027, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue442027);
+		Issue issue452028 = new Issue(2028, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue452028);
+		Issue issue462029 = new Issue(2029, "Issue Summary 0", "UVSP", 2001, "Gone Case", "Cannot be fixed", "Technical");
+		list.add(issue462029);
 		return list;
-
 	}
 
 }

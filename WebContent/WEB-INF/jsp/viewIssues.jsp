@@ -32,11 +32,13 @@
 
 <script type="text/javascript">
 	function searchText() {
-
+		var sindex = parseInt($("#fetchlimit").val());
+		var endindex = sindex+10;
 		$.ajax({
 			type : "POST",
 			contentType : 'application/json; charset=utf-8',
 			dataType : 'json',
+			data : 'indexone=sindex',
 			url : "getIssues",
 			success : function(response) {
 				var json = JSON.parse(JSON.stringify(response));
@@ -118,7 +120,8 @@
 
 					</c:if>
 					<div id="reloadme"></div>
-
+	
+					<input type="hidden" id="fetchlimit" value="<%= session.getAttribute("datafetched") %>">
 
 					<div class="row">
 
