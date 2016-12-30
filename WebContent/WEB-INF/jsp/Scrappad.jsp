@@ -1,4 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
+
+Analysed the BASE fix in the environment
+
+			this.$('.collapsible').collapsible();
+			
+		
+		
+		<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -31,48 +50,27 @@
 
 
 <script type="text/javascript">
-	var len=0;
-	var endindexval =0;
-	var sindexval = 0;
-	var upperlimit=0;
 	function searchText() {
-		
-		sindexval = parseInt(document.getElementById("fetchvalueid").value);
-		alert('fetching sindex value '+sindexval);
-		endindexval = sindexval+10;
-		document.getElementById("fetchvalueid").value=endindexval;
-		alert('setting to the fetchvalueid new value '+document.getElementById("fetchvalueid").value);
+		var sindex = parseInt($("#fetchlimit").val());
+		var endindex = sindex+10;
 		$.ajax({
-			type : "GET",
+			type : "POST",
 			contentType : 'application/json; charset=utf-8',
+			dataType : 'json',
+			data : {indexone:sindex},
 			url : "getIssues",
-			data: {sindex:sindexval,endindex:endindexval},
 			success : function(response) {
 				var json = JSON.parse(JSON.stringify(response));
 				display(json);
 			}
 		});
-
-
-		
 	}
 	function display(data) {
-		alert('display is hit with length : '+data.length);
-		var contenttrielen = data.length;
-		if(contenttrielen<10)
-			{
-			alert('length formed '+contenttrielen);
-			if(upperlimit==0){
-				alert('length upperlimit '+upperlimit);	
-			upperlimit=sindexval+parseInt(contenttrielen);
-			alert('new upperlimit '+upperlimit);
-			}
-			document.getElementById("fetchvalueid").value=upperlimit;
-			alert('once the len '+document.getElementById("fetchvalueid").value);
-			}
-		
-		
 		for (i = 0; i < data.length; i++) {
+
+			"<p>" + data[i].issueId + "has" + data[i].issueSummary + "and"
+					+ data[i].clientCode + ".</p>";
+
 			var item2 = '<ul class="collapsible" data-collapsible="expandable">';
 			item2 = item2 + '<li>';
 			item2 = item2 + '<div class="collapsible-header">';
@@ -88,8 +86,6 @@
 			$("#reloadme").append(item2);
 			}
 
-		
-		
 	}
 
 
@@ -114,7 +110,6 @@
 </head>
 
 <body>
-	<input type="hidden" id ="fetchvalueid" name="fetchvaluename" value ="<%= session.getAttribute("datafetched") %>"/>
 	<div class="container">
 
 		<div class="col s12 m6">
@@ -148,6 +143,7 @@
 					</c:if>
 					<div id="reloadme"></div>
 	
+					<input type="hidden" id="fetchlimit" value="<%= session.getAttribute("datafetched") %>">
 
 					<div class="row">
 
@@ -165,3 +161,4 @@
 	</div>
 </body>
 </html>
+		

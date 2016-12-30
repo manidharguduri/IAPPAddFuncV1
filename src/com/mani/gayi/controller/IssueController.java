@@ -1,16 +1,15 @@
 package com.mani.gayi.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,11 +23,21 @@ public class IssueController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView getMyForm(HttpServletRequest request) {
 		System.out.println("I getIssueList is called");
-		 HttpSession sessionobj = request.getSession();
+		HttpSession sessionobj = request.getSession();
 		ModelAndView model = new ModelAndView("viewIssues");
 		IssueDataTest issues = new IssueDataTest();
-		List<Issue> issueList = issues.getIssueList();
-		sessionobj.setAttribute("datafetched", issueList.size());
+		int size=0;
+		int maxsize = issues.getIssueList().size();
+		if(maxsize>30)
+		{
+			size=30;
+		}
+		else
+		{
+			size=maxsize;
+		}
+		List<Issue> issueList = issues.getIssueList().subList(0, size);
+		sessionobj.setAttribute("datafetched", size);
 		model.addObject("listsofIssues", issueList);
 		return model;
 	}
@@ -52,23 +61,36 @@ public class IssueController {
 	}
 
 	@RequestMapping(value = "/getAJAXIssueList", method = RequestMethod.POST)
-	public @ResponseBody List<Issue> getAJAXIssueList(@RequestParam int startindex,@RequestParam int endindex,HttpServletRequest request) {
-		System.out.println(" startindex "+startindex+" end index "+endindex);
-		IssueDataTest issues = new IssueDataTest();
-		List<Issue> issueList = issues.getIssueList(startindex,endindex);
+	public @ResponseBody List<Issue> getAJAXIssueList(HttpServletRequest request) {
+		System.out.println("Requested value is " + request.getAttribute("sindex"));
+		List<Issue> issueList = new ArrayList<>(); // issues.getIssueList(sindex,endindex);
 		return issueList;
 	}
-	
-	@RequestMapping(value = "/getIssues", method = RequestMethod.POST)
-	public @ResponseBody List<Issue> getIssueList(HttpServletRequest request) {
-		System.out.println("I getIssueList is called");
-		 HttpSession sessionobj = request.getSession();
-		 
-		 System.out.println("Request Value is "+request.getAttribute("indexone"));
+
+	@RequestMapping(value = "/getIssues", method = RequestMethod.GET)
+	public @ResponseBody List<Issue> getIssues(HttpServletRequest request) {
 		IssueDataTest issues = new IssueDataTest();
-		List<Issue> issueList = issues.getIssueList();
-		sessionobj.setAttribute("datafetched", issueList.size());
-		return issueList;
+		List resultList = issues.get33List();
+		int sindex = Integer.parseInt(request.getParameter("sindex"));
+		int endindex = Integer.parseInt(request.getParameter("endindex"));
+		System.out.println("sindex : "+sindex+" :: endindex : "+endindex);
+		int size = resultList.size();
+		System.out.println("Size is ............."+size);
+		if(size>endindex)
+		{
+			return resultList.subList(sindex, endindex);
+		}
+		if(size<endindex)
+		{
+			return resultList.subList(sindex,size);
+		}
+		if(size==endindex)
+		{
+			return new ArrayList<>();
+		}
+		
+		
+		return issues.get33List();
 	}
 
 }
