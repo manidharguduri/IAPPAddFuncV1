@@ -38,10 +38,8 @@
 	function searchText() {
 		
 		sindexval = parseInt(document.getElementById("fetchvalueid").value);
-		alert('fetching sindex value '+sindexval);
 		endindexval = sindexval+10;
 		document.getElementById("fetchvalueid").value=endindexval;
-		alert('setting to the fetchvalueid new value '+document.getElementById("fetchvalueid").value);
 		$.ajax({
 			type : "GET",
 			contentType : 'application/json; charset=utf-8',
@@ -57,18 +55,13 @@
 		
 	}
 	function display(data) {
-		alert('display is hit with length : '+data.length);
 		var contenttrielen = data.length;
 		if(contenttrielen<10)
 			{
-			alert('length formed '+contenttrielen);
 			if(upperlimit==0){
-				alert('length upperlimit '+upperlimit);	
 			upperlimit=sindexval+parseInt(contenttrielen);
-			alert('new upperlimit '+upperlimit);
 			}
 			document.getElementById("fetchvalueid").value=upperlimit;
-			alert('once the len '+document.getElementById("fetchvalueid").value);
 			}
 		
 		
