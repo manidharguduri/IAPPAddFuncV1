@@ -21,26 +21,20 @@ import com.mani.gayi.test.IssueDataTest;
 public class IssueController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView getMyForm(HttpServletRequest request) {
-		System.out.println("I getIssueList is called");
-		HttpSession sessionobj = request.getSession();
-		ModelAndView model = new ModelAndView("viewIssues");
-		IssueDataTest issues = new IssueDataTest();
-		int size=0;
-		int maxsize = issues.getIssueList().size();
-		if(maxsize>30)
-		{
-			size=30;
-		}
-		else
-		{
-			size=maxsize;
-		}
-		List<Issue> issueList = issues.getIssueList().subList(0, size);
-		sessionobj.setAttribute("datafetched", size);
-		model.addObject("listsofIssues", issueList);
-		return model;
+	public String getMyForm() {
+		return "CreateIssueAlpha1";
 	}
+	
+	@RequestMapping(value = "/reportAnIssue", method = RequestMethod.GET)
+	public String reportAnIssue()
+	{
+		return "CreateIssueAlpha1";
+	}
+	
+	
+	/*
+	 * This is method will fetch the ajax requested values.
+	 * */
 
 	@ResponseBody
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -59,18 +53,16 @@ public class IssueController {
 		return result;
 
 	}
+	
+	/*
+	 * This is method called when we drag down the issue list.
+	 * */
 
-	@RequestMapping(value = "/getAJAXIssueList", method = RequestMethod.POST)
+	@RequestMapping(value = "/getAJAXIssueList", method = RequestMethod.GET)
 	public @ResponseBody List<Issue> getAJAXIssueList(HttpServletRequest request) {
-		System.out.println("Requested value is " + request.getAttribute("sindex"));
-		List<Issue> issueList = new ArrayList<>(); // issues.getIssueList(sindex,endindex);
-		return issueList;
-	}
-
-	@RequestMapping(value = "/getIssues", method = RequestMethod.GET)
-	public @ResponseBody List<Issue> getIssues(HttpServletRequest request) {
+		System.out.println("In the method call getAJAXIssueList");
 		IssueDataTest issues = new IssueDataTest();
-		List resultList = issues.get33List();
+		List<Issue> resultList = issues.get33List();
 		int sindex = Integer.parseInt(request.getParameter("sindex"));
 		int endindex = Integer.parseInt(request.getParameter("endindex"));
 		System.out.println("sindex : "+sindex+" :: endindex : "+endindex);
@@ -91,6 +83,33 @@ public class IssueController {
 		
 		
 		return issues.get33List();
+	}
+
+	
+	/*
+	 * This is method called when we select the search button on the Nav bar.
+	 * */
+	
+	@RequestMapping(value = "/getIssues", method = RequestMethod.GET)
+	public ModelAndView getIssues(HttpServletRequest request) {
+		System.out.println("I getIssueList is called");
+		HttpSession sessionobj = request.getSession();
+		ModelAndView model = new ModelAndView("viewIssues");
+		IssueDataTest issues = new IssueDataTest();
+		int size=0;
+		int maxsize = issues.getIssueList().size();
+		if(maxsize>30)
+		{
+			size=30;
+		}
+		else
+		{
+			size=maxsize;
+		}
+		List<Issue> issueList = issues.getIssueList().subList(0, size);
+		sessionobj.setAttribute("datafetched", size);
+		model.addObject("listsofIssues", issueList);
+		return model;
 	}
 
 }

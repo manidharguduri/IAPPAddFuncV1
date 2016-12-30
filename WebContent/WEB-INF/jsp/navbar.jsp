@@ -21,9 +21,9 @@
 			<div class="nav-wrapper container">
 				<a href="#" class="brand-logo">Issue Tracking</a>
 				<ul class="right hide-on-med-and-down">
-					<li><a href="#">Search<i class="material-icons left">search</i></a>
+					<li><a href="getIssues" >Search<i class="material-icons left">search</i></a>
 					</li>
-					<li><a href="#">Report Issue<i class="material-icons left">add</i></a>
+					<li><a href="reportAnIssue">Report Issue<i class="material-icons left">add</i></a>
 					</li>
 					<li>
 						<ul id="dropdown1" class="dropdown-content">

@@ -45,7 +45,7 @@
 		$.ajax({
 			type : "GET",
 			contentType : 'application/json; charset=utf-8',
-			url : "getIssues",
+			url : "getAJAXIssueList",
 			data: {sindex:sindexval,endindex:endindexval},
 			success : function(response) {
 				var json = JSON.parse(JSON.stringify(response));
