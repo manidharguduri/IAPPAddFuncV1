@@ -62,12 +62,16 @@ public class IssueController {
 	public @ResponseBody List<Issue> getAJAXIssueList(HttpServletRequest request) {
 		System.out.println("In the method call getAJAXIssueList");
 		IssueDataTest issues = new IssueDataTest();
-		List<Issue> resultList = issues.get33List();
+		List<Issue> resultList = issues.getIssueList40();
 		int sindex = Integer.parseInt(request.getParameter("sindex"));
 		int endindex = Integer.parseInt(request.getParameter("endindex"));
 		System.out.println("sindex : "+sindex+" :: endindex : "+endindex);
 		int size = resultList.size();
 		System.out.println("Size is ............."+size);
+		if(sindex>size)
+		{
+			return new ArrayList<>();
+		}
 		if(size>endindex)
 		{
 			return resultList.subList(sindex, endindex);
